@@ -10,14 +10,19 @@ public class AsteroidSpawner : MonoBehaviour
 	float nextSpawn;
 	float timePassed;
 
+	float cameraWidth;
+	float cameraHeight;
+
 	ObjectPool objectPool;
 
 	// Use this for initialization
 	void Start()
 	{
 		objectPool = FindObjectOfType<ObjectPool>();
-		float originOffset = 6f;
-		origin = new Vector2(0, Camera.main.rect.height + originOffset);
+		float originOffset = 2f;
+		cameraHeight = Camera.main.orthographicSize;
+		cameraWidth = cameraHeight * Camera.main.aspect;
+		origin = new Vector2(0, cameraHeight + originOffset);
 		nextSpawn = spawnTime + Random.Range(-randomOffset, randomOffset);
 	}
 
@@ -26,7 +31,8 @@ public class AsteroidSpawner : MonoBehaviour
 	{
 		if (timePassed > nextSpawn)
 		{
-			Vector2 spawnPosition = new Vector2(origin.x + Random.Range(-Camera.main.rect.width, Camera.main.rect.width), origin.y);
+			float xOffset = Random.Range(-cameraWidth, cameraWidth);
+			Vector2 spawnPosition = new Vector2(origin.x + xOffset, origin.y);
 			GameObject asteroid = objectPool.GetBigAsteroid();
 			asteroid.transform.position = spawnPosition;
 			timePassed = 0;
