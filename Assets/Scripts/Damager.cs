@@ -6,13 +6,6 @@ public class Damager : MonoBehaviour
 {
 	public int damage;
 
-	//ObjectPool objectPool;
-
-	//private void Start()
-	//{
-	//	objectPool = FindObjectOfType<ObjectPool>();
-	//}
-
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		//HACK rewrite

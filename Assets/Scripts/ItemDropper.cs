@@ -14,6 +14,7 @@ public class ItemDropper : MonoBehaviour
 
 	void OnAsteroidDestroyed(GameObject asteroid)
 	{
+		//Checks if this item dropper asteroid is the same as the destroyed asteroid
 		if(asteroid == gameObject)
 		{
 			GameObject powerup = Instantiate(healthPowerup);

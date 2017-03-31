@@ -4,7 +4,6 @@ using System.Collections;
 public class MovementController : MonoBehaviour
 {
 	public float movementSpeed;
-	public float fireRate;
 
 	public KeyCode up;
 	public KeyCode down;
@@ -12,20 +11,17 @@ public class MovementController : MonoBehaviour
 	public KeyCode right;
 	public KeyCode fire;
 
-	ObjectPool objectPool;
-
-	float timePassed;
+	IWeapon weapon;
 
 	// Use this for initialization
 	void Start()
 	{
-		objectPool = FindObjectOfType<ObjectPool>();
+		weapon = GetComponent<IWeapon>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		timePassed += Time.deltaTime;
 		if (Input.GetKey(up))
 		{
 			transform.Translate(Vector2.up * Time.deltaTime * movementSpeed, Space.World);
@@ -44,12 +40,7 @@ public class MovementController : MonoBehaviour
 		}
 		if (Input.GetKey(fire))
 		{
-			if(timePassed > fireRate)
-			{
-				GameObject laser = objectPool.GetLaser();
-				laser.transform.position = new Vector2(transform.position.x, transform.position.y + 1f);
-				timePassed = 0;
-			}
+			weapon.Fire();
 		}
 	}
 }

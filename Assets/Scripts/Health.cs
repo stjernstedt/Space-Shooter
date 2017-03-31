@@ -75,6 +75,15 @@ public class Health : MonoBehaviour
 		health = maxHealth;
 	}
 
+	public void AddHealth(int amount)
+	{
+		if (health < maxHealth)
+		{
+			health += amount;
+			uiHandler.UpdateUI();
+		}
+	}
+
 	private void OnDeath()
 	{
 		if (tag == "BigAsteroid")
@@ -101,7 +110,7 @@ public class Health : MonoBehaviour
 				}
 			}
 		}
-		if(tag == "SmallAsteroid")
+		if (tag == "SmallAsteroid")
 		{
 			uiHandler.AddPoints(10);
 		}
