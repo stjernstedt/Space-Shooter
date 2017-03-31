@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 1a5eba9c15ab53c4fa753a63c5398ed8
+timeCreated: 1490002472
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - bigAsteroidPrefab: {fileID: 151716, guid: 29c88a9f70f9edd4a84c347436695cf5, type: 2}
+  - smallAsteroidPrefab: {fileID: 157986, guid: c1a7de7337a1d5f449f6072f254789a5,
+      type: 2}
+  - LaserPrefab: {fileID: 1740713911506016, guid: e3e00c5ed6b7a5d4eb16ca1a3de78745,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
