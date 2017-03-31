@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EventHandler : MonoBehaviour
 {
-	public delegate void AsteroidDestroyedDelegate();
+	public delegate void AsteroidDestroyedDelegate(GameObject asteroid);
 	public static event AsteroidDestroyedDelegate AsteroidDestroyedSubscribers;
 
-	//TODO rewrite for observer pattern
-	public static void AsteroidDestroyed()
+	public static void AsteroidDestroyed(GameObject asteroid)
 	{
-		AsteroidDestroyedSubscribers();
+		AsteroidDestroyedSubscribers(asteroid);
 	}
 }

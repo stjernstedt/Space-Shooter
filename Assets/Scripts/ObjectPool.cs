@@ -93,8 +93,13 @@ public class ObjectPool : MonoBehaviour
 				lasers.Add(poolObject);
 				break;
 			default:
+				Destroy(poolObject);
 				break;
 		}
-		poolObject.SetActive(false);
+
+		if (poolObject != null)
+		{
+			poolObject.SetActive(false);
+		}
 	}
 }

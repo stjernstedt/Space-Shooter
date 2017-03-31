@@ -79,6 +79,7 @@ public class Health : MonoBehaviour
 	{
 		if (tag == "BigAsteroid")
 		{
+			EventHandler.AsteroidDestroyed(gameObject);
 			uiHandler.AddPoints(50);
 			int numberOfSpawns = Random.Range(2, 6);
 			GameObject[] asteroids = new GameObject[numberOfSpawns];
