@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPowerup : MonoBehaviour, IPowerup
+public class TripleLaserPowerup : MonoBehaviour, IPowerup
 {
+
 	public void ApplyPowerup()
 	{
-		Health health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
-		health.AddHealth(1);
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		Destroy(player.GetComponent<Weapon>());
+		IWeapon weapon = player.AddComponent<TripleLaser>();
+		EventHandler.WeaponChanged(weapon);
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)

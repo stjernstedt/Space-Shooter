@@ -16,6 +16,7 @@ public class MovementController : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		EventHandler.WeaponChangedSubscribers += ChangeWeapon;
 		weapon = GetComponent<IWeapon>();
 	}
 
@@ -42,5 +43,10 @@ public class MovementController : MonoBehaviour
 		{
 			weapon.Fire();
 		}
+	}
+
+	void ChangeWeapon(IWeapon weapon)
+	{
+		this.weapon = weapon;
 	}
 }

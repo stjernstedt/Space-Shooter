@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TripleLaser : Weapon, IWeapon
 {
+	public float fireRate = 0.2f;
 
 	public void Fire()
 	{

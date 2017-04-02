@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Laser : Weapon, IWeapon
 {
+	public float fireRate = 0.1f;
+
 	public void Fire()
 	{
 		if (timePassed > fireRate)

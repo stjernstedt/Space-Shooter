@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemDropper : MonoBehaviour
 {
 	public GameObject healthPowerup;
+	public GameObject tripleLaserPowerup;
 
 	void Start()
 	{
@@ -15,10 +15,33 @@ public class ItemDropper : MonoBehaviour
 	void OnAsteroidDestroyed(GameObject asteroid)
 	{
 		//Checks if this item dropper asteroid is the same as the destroyed asteroid
-		if(asteroid == gameObject)
+		if (asteroid == gameObject)
 		{
-			GameObject powerup = Instantiate(healthPowerup);
-			powerup.transform.position = transform.position;
+			GameObject powerup = GetPowerup();
+			if (powerup != null)
+			{
+				powerup.transform.position = transform.position;
+			}
 		}
+	}
+
+	GameObject GetPowerup()
+	{
+		int random = Random.Range(0, 100);
+		//TODO add different items and give them a chance to drop
+		GameObject powerup = null;
+
+		if (random <= 20)
+		{
+			powerup = Instantiate(healthPowerup);
+			return powerup;
+		}
+		if (random <= 40)
+		{
+			powerup = Instantiate(tripleLaserPowerup);
+			return powerup;
+		}
+
+		return powerup;
 	}
 }
