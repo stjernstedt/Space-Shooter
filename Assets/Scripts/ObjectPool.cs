@@ -12,8 +12,8 @@ public class ObjectPool : MonoBehaviour
 	public int amountOfSmallAsteroids;
 	public int amountOfLasers;
 
-	List<GameObject> bigAsteroids = new List<GameObject>();
-	List<GameObject> smallAsteroids = new List<GameObject>();
+	public List<GameObject> bigAsteroids = new List<GameObject>();
+	public List<GameObject> smallAsteroids = new List<GameObject>();
 	List<GameObject> lasers = new List<GameObject>();
 
 	void Start()

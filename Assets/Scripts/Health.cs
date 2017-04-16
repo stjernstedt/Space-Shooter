@@ -116,5 +116,9 @@ public class Health : MonoBehaviour
 		}
 
 		objectPool.ReturnObject(gameObject);
+		if(tag == "Player")
+		{
+			EventHandler.GameOver();
+		}
 	}
 }
