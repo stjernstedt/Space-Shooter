@@ -31,12 +31,12 @@ public class ItemDropper : MonoBehaviour
 		//TODO add different items and give them a chance to drop
 		GameObject powerup = null;
 
-		if (random <= 20)
+		if (random <= 10)
 		{
 			powerup = Instantiate(healthPowerup);
 			return powerup;
 		}
-		if (random <= 40)
+		if (random <= 20)
 		{
 			powerup = Instantiate(tripleLaserPowerup);
 			return powerup;

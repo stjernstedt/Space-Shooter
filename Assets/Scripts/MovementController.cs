@@ -43,10 +43,31 @@ public class MovementController : MonoBehaviour
 		{
 			weapon.Fire();
 		}
+		if (Input.GetMouseButton(0))
+		{
+			weapon.Fire();
+			Vector2 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			if (Vector2.Distance(transform.position, target) > 0.1)
+			{
+				Vector2 pos = transform.position;
+				Vector2 dir = target - pos;
+				dir = dir.normalized;
+				transform.Translate(dir * Time.deltaTime * movementSpeed, Space.World);
+			}
+		}
 	}
 
 	void ChangeWeapon(IWeapon weapon)
 	{
+		StartCoroutine(WeaponBoost());
+		this.weapon = weapon;
+	}
+
+	IEnumerator WeaponBoost()
+	{
+		yield return new WaitForSeconds(5);
+		Destroy(GetComponent<Weapon>());
+		IWeapon weapon = gameObject.AddComponent<Laser>();
 		this.weapon = weapon;
 	}
 }
