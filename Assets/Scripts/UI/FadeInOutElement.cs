@@ -2,18 +2,18 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class FadeInOutText : MonoBehaviour
+public class FadeInOutElement : MonoBehaviour
 {
 	public float timeToFadeIn = 1f;
 	public float timeToFadeOut = 1f;
 	float startTime;
 	float timePassed;
 
-	Text text;
+	MaskableGraphic element;
 
 	void OnEnable()
 	{
-		text = GetComponent<Text>();
+		element = GetComponent<Text>();
 		StartCoroutine(FadeIn());
 	}
 
@@ -21,12 +21,12 @@ public class FadeInOutText : MonoBehaviour
 	{
 		startTime = Time.time;
 		timePassed = 0;
-		text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
+		element.color = new Color(element.color.r, element.color.g, element.color.b, 0);
 		while (timePassed < timeToFadeIn)
 		{
 			timePassed = Time.time - startTime;
 			float lerpValue = timePassed / timeToFadeIn;
-			text.color = new Color(text.color.r, text.color.g, text.color.b, Mathf.Lerp(0, 1, lerpValue));
+			element.color = new Color(element.color.r, element.color.g, element.color.b, Mathf.Lerp(0, 1, lerpValue));
 			yield return null;
 		}
 		StartCoroutine(FadeOut());
@@ -40,7 +40,7 @@ public class FadeInOutText : MonoBehaviour
 		{
 			timePassed = Time.time - startTime;
 			float lerpValue = timePassed / timeToFadeOut;
-			text.color = new Color(text.color.r, text.color.g, text.color.b, Mathf.Lerp(1, 0, lerpValue));
+			element.color = new Color(element.color.r, element.color.g, element.color.b, Mathf.Lerp(1, 0, lerpValue));
 			yield return null;
 		}
 		gameObject.SetActive(false);

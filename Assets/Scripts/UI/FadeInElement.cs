@@ -10,11 +10,11 @@ public class FadeInElement : MonoBehaviour
 	float startTime;
 	float timePassed;
 
-	MaskableGraphic image;
+	MaskableGraphic element;
 
 	void OnEnable()
 	{
-		image = GetComponent<MaskableGraphic>();
+		element = GetComponent<MaskableGraphic>();
 		StartCoroutine(FadeIn());
 	}
 
@@ -22,12 +22,12 @@ public class FadeInElement : MonoBehaviour
 	{
 		startTime = Time.time;
 		timePassed = 0;
-		image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+		element.color = new Color(element.color.r, element.color.g, element.color.b, 0);
 		while (timePassed < timeToFadeIn)
 		{
 			timePassed = Time.time - startTime;
 			float lerpValue = timePassed / timeToFadeIn;
-			image.color = new Color(image.color.r, image.color.g, image.color.b, Mathf.Lerp(0, targetOpacity, lerpValue));
+			element.color = new Color(element.color.r, element.color.g, element.color.b, Mathf.Lerp(0, targetOpacity, lerpValue));
 			yield return null;
 		}
 	}

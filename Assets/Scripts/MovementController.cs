@@ -85,6 +85,7 @@ public class MovementController : MonoBehaviour
 
 	void ChangeWeapon(IWeapon weapon)
 	{
+		//BUG if picking up boost while blinking sometimes results in no weapon
 		StartCoroutine(WeaponBoost());
 		this.weapon = weapon;
 	}
