@@ -7,8 +7,13 @@ public class AsteroidSpawner : MonoBehaviour
 
 	public float spawnTime;
 	public float randomOffset;
+	public float startingDifficulty;
+	public float maxDifficulty;
+	public float timeToMaxDifficulty;
+
 	float nextSpawn;
 	float timePassed;
+	float totalTime;
 
 	float cameraWidth;
 	float cameraHeight;
@@ -18,6 +23,7 @@ public class AsteroidSpawner : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		spawnTime = startingDifficulty;
 		objectPool = FindObjectOfType<ObjectPool>();
 		float originOffset = 2f;
 		cameraHeight = Camera.main.orthographicSize;
@@ -29,6 +35,10 @@ public class AsteroidSpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		totalTime += Time.deltaTime;
+
+		spawnTime = Mathf.Lerp(startingDifficulty, maxDifficulty, totalTime / timeToMaxDifficulty);
+
 		if (timePassed > nextSpawn)
 		{
 			float xOffset = Random.Range(-cameraWidth, cameraWidth);
